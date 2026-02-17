@@ -29,6 +29,9 @@
 
 <body>
 
+    <!-- Skip to main content link for accessibility -->
+    <a href="#hero" class="skip-link">Skip to main content</a>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -94,37 +97,37 @@
 
             <div class="programs-grid fade-in">
                 <div class="program-card">
-                    <span class="program-icon">📢</span>
+                    <span class="program-icon" role="img" aria-label="발표 아이콘">📢</span>
                     <h4>AI 활용사례 PT & 시연</h4>
                     <p>실제 업무 적용 성공/실패 사례를 가감 없이 공유합니다.</p>
                 </div>
                 <div class="program-card">
-                    <span class="program-icon">💬</span>
+                    <span class="program-icon" role="img" aria-label="대화 아이콘">💬</span>
                     <h4>프롬프트 우수사례</h4>
                     <p>검증된 고성능 프롬프트 템플릿을 공유하고 해설합니다.</p>
                 </div>
                 <div class="program-card">
-                    <span class="program-icon">📚</span>
+                    <span class="program-icon" role="img" aria-label="책 아이콘">📚</span>
                     <h4>AI 아티클/논문 큐레이션</h4>
                     <p>쏟아지는 정보 중 필독해야 할 핵심 자료를 엄선합니다.</p>
                 </div>
                 <div class="program-card">
-                    <span class="program-icon">📰</span>
+                    <span class="program-icon" role="img" aria-label="뉴스 아이콘">📰</span>
                     <h4>뉴스 & 트렌드 브리핑</h4>
                     <p>한 달간의 AI 기술 변화와 시장 동향을 요약 정리합니다.</p>
                 </div>
                 <div class="program-card">
-                    <span class="program-icon">🤖</span>
+                    <span class="program-icon" role="img" aria-label="로봇 아이콘">🤖</span>
                     <h4>AI Agent 제작 실습</h4>
                     <p>나만의 맞춤형 AI 에이전트를 기획하고 제작해봅니다.</p>
                 </div>
                 <div class="program-card">
-                    <span class="program-icon">⚡</span>
+                    <span class="program-icon" role="img" aria-label="번개 아이콘">⚡</span>
                     <h4>업무 자동화 구현</h4>
                     <p>반복 업무를 제거하는 구체적인 자동화 스크립트를 배웁니다.</p>
                 </div>
                 <div class="program-card">
-                    <span class="program-icon">🧠</span>
+                    <span class="program-icon" role="img" aria-label="두뇌 아이콘">🧠</span>
                     <h4>Collective Problem Solving</h4>
                     <p>집단 지성으로 실무 난제에 대한 AI 솔루션을 토론합니다.</p>
                 </div>
@@ -272,11 +275,12 @@
             <p style="font-size: 1.2rem; margin-bottom: 32px; color: var(--text-secondary);">AI 시대에 먼저 움직일 사람으로 합류하세요.
             </p>
             <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
-                <input type="email" placeholder="이메일 주소를 입력하세요"
-                    style="flex: 1; padding: 16px; border-radius: 50px; border: none; outline: none;">
+                <label for="email-input" class="visually-hidden">이메일 주소</label>
+                <input id="email-input" type="email" placeholder="이메일 주소를 입력하세요"
+                    style="flex: 1; padding: 16px; border-radius: 50px; border: none; outline: none;" required>
                 <button type="submit" class="btn-cta">신청하기</button>
             </form>
-            <p style="margin-top: 24px; font-size: 0.9rem; opacity: 0.7;">* 초기 멤버 모집 중입니다. (문의: contact@morning-ai.com)
+            <p style="margin-top: 24px; font-size: 0.9rem; opacity: 0.7;">* 초기 멤버 모집 중입니다. (문의: <a href="mailto:contact@morning-ai.com" style="color: var(--accent-secondary); text-decoration: underline;">contact@morning-ai.com</a>)
             </p>
         </div>
     </section>

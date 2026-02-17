@@ -31,10 +31,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = form.querySelector('input[type="email"]').value;
-            if (email) {
-                alert(`참여 신청이 접수되었습니다! (${email})\n곧 안내 메일을 보내드리겠습니다.`);
-                form.reset();
+            const emailInput = form.querySelector('input[type="email"]');
+            const submitButton = form.querySelector('button[type="submit"]');
+            const email = emailInput?.value;
+            
+            if (email && emailInput.validity.valid) {
+                // Disable button to prevent multiple submissions
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = '처리 중...';
+                }
+                
+                // Simulate submission (in production, this would be an API call)
+                setTimeout(() => {
+                    alert(`참여 신청이 접수되었습니다! (${email})\n곧 안내 메일을 보내드리겠습니다.`);
+                    form.reset();
+                    
+                    // Re-enable button
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = '신청하기';
+                    }
+                }, 500);
+            } else {
+                alert('올바른 이메일 주소를 입력해주세요.');
             }
         });
     }
@@ -74,4 +94,23 @@ document.addEventListener('DOMContentLoaded', () => {
             closeMission();
         }
     });
+
+    // Focus trap for modal accessibility
+    if (missionModal) {
+        missionModal.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab' && missionModal.classList.contains('open')) {
+                const focusableElements = missionModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement?.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement?.focus();
+                }
+            }
+        });
+    }
 });

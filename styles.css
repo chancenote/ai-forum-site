@@ -214,7 +214,10 @@ nav a:hover {
     margin-bottom: 40px;
 }
 
-.card {
+/* Base card styles - shared across multiple card types */
+.card,
+.post-card,
+.leader-card {
     background: rgba(26, 26, 36, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -224,7 +227,9 @@ nav a:hover {
     transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
-.card:hover {
+.card:hover,
+.post-card:hover,
+.leader-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-primary);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -466,6 +471,53 @@ footer {
     transform: translateY(0);
 }
 
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .card,
+    .post-card,
+    .leader-card,
+    .btn-cta,
+    .btn-outline,
+    .cta-button-small,
+    .archive-item {
+        transition: none;
+    }
+}
+
+/* Accessibility utilities */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-primary);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 /* Navbar for secondary pages */
 .navbar {
     height: var(--header-height);
@@ -554,21 +606,9 @@ footer {
     margin: 0 auto;
 }
 
+/* Post card specific styles (inherits from base .card) */
 .post-card {
-    background: rgba(26, 26, 36, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 32px;
-    border-radius: 16px;
     margin-bottom: 24px;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-
-.post-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-primary);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .post-card a {
@@ -628,21 +668,9 @@ footer {
     margin-top: 40px;
 }
 
+/* Leader card specific styles (inherits from base .card) */
 .leader-card {
-    background: rgba(26, 26, 36, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 32px;
-    border-radius: 16px;
     text-align: center;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-
-.leader-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-primary);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .leader-card .avatar {
