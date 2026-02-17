@@ -398,6 +398,62 @@ footer {
     font-size: 0.9rem;
 }
 
+.footer-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mission modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+    z-index: 2000;
+}
+
+.modal.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(180deg, rgba(26,26,36,0.95), rgba(20,20,28,0.95));
+    border-radius: 12px;
+    padding: 28px;
+    width: min(680px, 92%);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 20px 60px rgba(2,6,23,0.6);
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.mission-statement {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-top: 8px;
+    white-space: pre-wrap;
+}
+
 /* Utility Animations */
 .fade-in {
     opacity: 0;

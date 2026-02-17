@@ -38,4 +38,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Mission modal (footer button)
+    const missionBtn = document.getElementById('mission-btn');
+    const missionModal = document.getElementById('mission-modal');
+    const missionClose = missionModal?.querySelector('.modal-close');
+
+    function openMission() {
+        missionModal?.classList.add('open');
+        missionModal?.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        missionClose?.focus();
+    }
+
+    function closeMission() {
+        missionModal?.classList.remove('open');
+        missionModal?.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        missionBtn?.focus();
+    }
+
+    missionBtn?.addEventListener('click', openMission);
+    missionClose?.addEventListener('click', closeMission);
+
+    missionModal?.addEventListener('click', (e) => {
+        if (e.target === missionModal) closeMission();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && missionModal?.classList.contains('open')) {
+            closeMission();
+        }
+    });
 });

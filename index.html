@@ -171,6 +171,11 @@
                     <p>Google Workspace</p>
                     <p>Notion 아카이빙</p>
                 </div>
+                <div class="info-box">
+                    <div class="icon">💬</div>
+                    <h3>Community</h3>
+                    <p>카카오톡 전용 소통방 운영</p>
+                </div>
             </div>
         </div>
     </section>
@@ -265,10 +270,20 @@
     </section>
 
     <footer>
-        <div class="container">
+        <div class="container footer-actions">
             <p>&copy; 2026 Morning AI Forum. All rights reserved.</p>
+            <button id="mission-btn" class="btn-outline" style="margin-left:12px;">사명문</button>
         </div>
     </footer>
+
+    <!-- Mission Modal -->
+    <div id="mission-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content" role="document">
+            <button class="modal-close" aria-label="닫기">&times;</button>
+            <h3 style="margin-bottom:12px;">사명문</h3>
+            <p class="mission-statement">'AI 실무활용력을 높혀, 누구나 원하는 목표를 이룰 수 있도록 돕는다. 이것이 우리의 미션이다"</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
