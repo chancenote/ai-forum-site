@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitButton = form.querySelector('button[type="submit"]');
             const email = emailInput?.value;
             
-            if (email && emailInput.validity.valid) {
+            if (email && emailInput?.validity?.valid) {
                 // Disable button to prevent multiple submissions
                 if (submitButton) {
                     submitButton.disabled = true;
@@ -64,20 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const missionModal = document.getElementById('mission-modal');
     const missionClose = missionModal?.querySelector('.modal-close');
 
+    // Delay for focus management to ensure modal animations complete
+    const FOCUS_DELAY = 100;
+
     function openMission() {
         missionModal?.classList.add('open');
         missionModal?.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
-        // Focus on close button for accessibility
-        setTimeout(() => missionClose?.focus(), 100);
+        // Focus on close button for accessibility after modal animation
+        setTimeout(() => missionClose?.focus(), FOCUS_DELAY);
     }
 
     function closeMission() {
         missionModal?.classList.remove('open');
         missionModal?.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        // Return focus to the button that opened the modal
-        setTimeout(() => missionBtn?.focus(), 100);
+        // Return focus to the button that opened the modal after close animation
+        setTimeout(() => missionBtn?.focus(), FOCUS_DELAY);
     }
 
     missionBtn?.addEventListener('click', openMission);
