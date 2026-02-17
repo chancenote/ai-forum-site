@@ -48,23 +48,27 @@ document.addEventListener('DOMContentLoaded', () => {
         missionModal?.classList.add('open');
         missionModal?.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
-        missionClose?.focus();
+        // Focus on close button for accessibility
+        setTimeout(() => missionClose?.focus(), 100);
     }
 
     function closeMission() {
         missionModal?.classList.remove('open');
         missionModal?.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        missionBtn?.focus();
+        // Return focus to the button that opened the modal
+        setTimeout(() => missionBtn?.focus(), 100);
     }
 
     missionBtn?.addEventListener('click', openMission);
     missionClose?.addEventListener('click', closeMission);
 
+    // Close modal on outside click
     missionModal?.addEventListener('click', (e) => {
         if (e.target === missionModal) closeMission();
     });
 
+    // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && missionModal?.classList.contains('open')) {
             closeMission();
